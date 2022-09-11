@@ -18,11 +18,11 @@ public class MyAnimation {
         TextureRegion[] tmp = new TextureRegion[regions.length * regions[0].length];
         int cnt = 0;
         for (int i = 0; i < regions.length; i++) {
-            for (int j = 0; j < regions.length; j++) {
+            for (int j = 0; j < regions[0].length; j++) {
                 tmp[cnt++] = regions[i][j];
             }
         }
-        animation = new Animation<>(1 / fps, regions[0]);
+        animation = new Animation<>(1 / fps, tmp);
         animation.setPlayMode(playMode);
     }
 
