@@ -5,8 +5,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.animation.MyAtlasAnimation;
@@ -17,7 +20,7 @@ public class MyGdxGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private Texture img, coinImg;
-    private MyAtlasAnimation animation, explosionAnim;
+    private MyAtlasAnimation stand, walk, jump, tmpA;
     private Music music;
     private Sound sound;
     MyInputProcessor myInputProcessor;
@@ -27,42 +30,45 @@ public class MyGdxGame extends ApplicationAdapter {
 
     @Override
     public void create() {
+
+        shapeRenderer = new ShapeRenderer();
+        rectangle = new Rectangle();
+        window = new Rectangle(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         myInputProcessor = new MyInputProcessor();
         Gdx.input.setInputProcessor(myInputProcessor);
 
         music = Gdx.audio.newMusic(Gdx.files.internal("stray-the-way-you-compute-tonight.mp3"));
         music.setVolume(0.05f);
-//        music.setPan(0,1);
         music.setLooping(true);
         music.play();
 
         sound = Gdx.audio.newSound(Gdx.files.internal("stray-droid-reaction-heart-sound-effect.mp3"));
 
         batch = new SpriteBatch();
-        img = new Texture("city.png");
+        img = new Texture("Genesis 32X SCD - The Flintstones - Stage 03.png");
         coinImg = new Texture("coin-sprite-animation.png");
-//        animation = new MyAnimation("kindpng_2838048.png", 5, 6, 10, Animation.PlayMode.LOOP);
-//        explosionAnim = new MyAnimation("explosion.png", 4, 8, 10, Animation.PlayMode.LOOP);
+        stand = new MyAtlasAnimation("atlas/fred.atlas", "stand", 2, Animation.PlayMode.LOOP);
+        walk = new MyAtlasAnimation("atlas/fred.atlas", "walk", 10, Animation.PlayMode.LOOP);
+        jump = new MyAtlasAnimation("atlas/fred.atlas", "jump", 7, Animation.PlayMode.LOOP);
+        tmpA = stand;
     }
 
     @Override
     public void render() {
         ScreenUtils.clear(1, 1, 1, 1);
-        animation.setTime(Gdx.graphics.getDeltaTime());
-        explosionAnim.setTime(Gdx.graphics.getDeltaTime());
-
-        /*float x = Gdx.input.getX() - animation.startAnimation().getRegionWidth() / 2;
-        float y = Gdx.graphics.getHeight() - Gdx.input.getY() - animation.startAnimation().getRegionHeight() / 2;*/
+        tmpA = stand;
+        dir = 0;
 
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-            sound.play();
+            sound.play(0.1f, 1, 0);
         }
-
         if (myInputProcessor.getOutString().contains("A")) {
-            x--;
+            dir = -1;
+            tmpA = walk;
         }
         if (myInputProcessor.getOutString().contains("D")) {
-            x++;
+            dir = 1;
+            tmpA = walk;
         }
         if (myInputProcessor.getOutString().contains("W")) {
             y++;
@@ -75,13 +81,39 @@ public class MyGdxGame extends ApplicationAdapter {
             y = Gdx.graphics.getHeight() / 2;
         }
 
+        if (dir == -1) {
+            x -= step;
+        }
+        if (dir == 1) {
+            x += step;
+        }
+
+        TextureRegion tmp = tmpA.startAnimation();
+        if (!tmpA.startAnimation().isFlipX() & dir == -1) {
+            tmpA.startAnimation().flip(true, false);
+        }
+        if (tmpA.startAnimation().isFlipX() & dir == 1) {
+            tmpA.startAnimation().flip(true, false);
+        }
+        rectangle.x = (int) x;
+        rectangle.y = (int) y;
+        rectangle.width = tmp.getRegionWidth();
+        rectangle.height = tmp.getRegionHeight();
+
+        tmpA.setTime(Gdx.graphics.getDeltaTime());
         System.out.println(myInputProcessor.getOutString());
 
         batch.begin();
+        shapeRenderer.setColor(Color.BLACK);
         batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch.draw(animation.startAnimation(), x, y);
-        batch.draw(explosionAnim.startAnimation(), 1, 90);
+        batch.draw(tmpA.startAnimation(), x, y);
         batch.end();
+
+        if (!window.contains(rectangle)) {
+            Gdx.graphics.setTitle("Out");
+        } else {
+            Gdx.graphics.setTitle("In");
+        }
     }
 
     @Override
@@ -89,8 +121,9 @@ public class MyGdxGame extends ApplicationAdapter {
         batch.dispose();
         img.dispose();
         coinImg.dispose();
-        animation.dispose();
-        explosionAnim.dispose();
+        stand.dispose();
+        walk.dispose();
+        jump.dispose();
         music.dispose();
         sound.dispose();
     }

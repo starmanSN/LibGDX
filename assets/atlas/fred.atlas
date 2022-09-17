@@ -1,0 +1,83 @@
+
+fred.png
+size: 64, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+jump
+  rotate: false
+  xy: 2, 188
+  size: 30, 43
+  orig: 37, 53
+  offset: 3, 8
+  index: 2
+jump
+  rotate: false
+  xy: 2, 153
+  size: 29, 33
+  orig: 35, 53
+  offset: 3, 4
+  index: 3
+jump
+  rotate: false
+  xy: 28, 81
+  size: 25, 34
+  orig: 32, 53
+  offset: 3, 11
+  index: 1
+stand
+  rotate: false
+  xy: 2, 2
+  size: 24, 35
+  orig: 38, 53
+  offset: 7, 4
+  index: 1
+stand
+  rotate: false
+  xy: 28, 11
+  size: 24, 33
+  orig: 36, 53
+  offset: 6, 4
+  index: 2
+walk
+  rotate: false
+  xy: 34, 194
+  size: 24, 37
+  orig: 35, 53
+  offset: 6, 4
+  index: 5
+walk
+  rotate: false
+  xy: 2, 114
+  size: 24, 37
+  orig: 37, 53
+  offset: 5, 4
+  index: 2
+walk
+  rotate: false
+  xy: 2, 76
+  size: 24, 36
+  orig: 32, 53
+  offset: 3, 5
+  index: 1
+walk
+  rotate: false
+  xy: 2, 39
+  size: 24, 35
+  orig: 32, 53
+  offset: 3, 6
+  index: 4
+walk
+  rotate: false
+  xy: 28, 117
+  size: 25, 34
+  orig: 35, 53
+  offset: 5, 7
+  index: 3
+walk
+  rotate: false
+  xy: 28, 46
+  size: 24, 33
+  orig: 35, 53
+  offset: 5, 8
+  index: 6
