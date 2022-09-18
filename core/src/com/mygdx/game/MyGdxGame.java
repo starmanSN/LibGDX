@@ -47,7 +47,7 @@ public class MyGdxGame extends ApplicationAdapter {
         batch = new SpriteBatch();
         img = new Texture("Genesis 32X SCD - The Flintstones - Stage 03.png");
         coinImg = new Texture("coin-sprite-animation.png");
-        stand = new MyAtlasAnimation("atlas/fred.atlas", "stand", 2, Animation.PlayMode.LOOP);
+        stand = new MyAtlasAnimation("atlas/fred.atlas", "stand", 1, Animation.PlayMode.LOOP);
         walk = new MyAtlasAnimation("atlas/fred.atlas", "walk", 10, Animation.PlayMode.LOOP);
         jump = new MyAtlasAnimation("atlas/fred.atlas", "jump", 7, Animation.PlayMode.LOOP);
         tmpA = stand;
@@ -89,6 +89,7 @@ public class MyGdxGame extends ApplicationAdapter {
         }
 
         TextureRegion tmp = tmpA.startAnimation();
+        tmpA.setTime(Gdx.graphics.getDeltaTime());
         if (!tmpA.startAnimation().isFlipX() & dir == -1) {
             tmpA.startAnimation().flip(true, false);
         }
@@ -100,7 +101,7 @@ public class MyGdxGame extends ApplicationAdapter {
         rectangle.width = tmp.getRegionWidth();
         rectangle.height = tmp.getRegionHeight();
 
-        tmpA.setTime(Gdx.graphics.getDeltaTime());
+
         System.out.println(myInputProcessor.getOutString());
 
         batch.begin();
