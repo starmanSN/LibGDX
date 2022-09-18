@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="16" height="1" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="22">
+ <tileset firstgid="1" name="Custom Edited - Mario Customs - Grassland Tileset" tilewidth="32" tileheight="32" tilecount="108" columns="9">
+  <image source="Custom Edited - Mario Customs - Grassland Tileset.png" trans="9ab5c3" width="306" height="414"/>
+ </tileset>
+ <layer id="1" name="Слой тайлов 1" width="16" height="1">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,4,5,1,1
+</data>
+ </layer>
+ <objectgroup id="3" name="env">
+  <object id="3" x="2.66667" y="1.66667" width="510" height="31"/>
+ </objectgroup>
+ <objectgroup id="4" name="dyn">
+  <properties>
+   <property name="BodyType" value="DynamicBody"/>
+   <property name="density" type="float" value="1"/>
+  </properties>
+  <object id="12" x="78" y="-92">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="13" x="188" y="-81">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="14" x="381" y="-92">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="15" x="327" y="-60">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="16" x="160.5" y="-36">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="17" x="102" y="-47">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="hero">
+  <object id="19" name="Hero" x="251.667" y="-61" width="21.3333" height="20"/>
+ </objectgroup>
+</map>

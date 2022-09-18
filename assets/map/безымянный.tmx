@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="20" height="3" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="23">
+ <tileset firstgid="1" name="Custom Edited - Mario Customs - Grassland Tileset" tilewidth="16" tileheight="16" tilecount="475" columns="19">
+  <image source="Custom Edited - Mario Customs - Grassland Tileset.png" trans="c4d4dc" width="306" height="414"/>
+ </tileset>
+ <layer id="1" name="Слой тайлов 1" width="20" height="3">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAuYKQypjYAAAp4ABU=
+  </data>
+ </layer>
+ <layer id="2" name="Слой тайлов 2" width="20" height="3">
+  <data encoding="base64" compression="zlib">
+   eJzbysDAsBWKYQCdj018MxBvQRJHpgczAAApPgfF
+  </data>
+ </layer>
+</map>
