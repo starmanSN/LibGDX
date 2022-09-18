@@ -13,7 +13,7 @@ public class MyAtlasAnimation {
     public MyAtlasAnimation(String atlas, String name, float fps, Animation.PlayMode playMode) {
         time = 0;
         this.atlas = new TextureAtlas(atlas);
-        animation = new Animation<>(1 / fps, this.atlas.findRegion(name));
+        animation = new Animation<>(1 / fps, this.atlas.findRegions(name));
         animation.setPlayMode(playMode);
     }
 
