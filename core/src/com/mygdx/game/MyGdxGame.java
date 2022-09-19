@@ -46,7 +46,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
     @Override
     public void create() {
-        map = new TmxMapLoader().load("map/map.tmx");
+        map = new TmxMapLoader().load("map/map3.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
 
         physics = new Physics();
@@ -88,11 +88,11 @@ public class MyGdxGame extends ApplicationAdapter {
         def.position.set(x, y);
         shape.setAsBox(w, h);
         fixtureDef.shape = shape;
-        fixtureDef.density = 1;
-        fixtureDef.friction = 0;
-        fixtureDef.restitution = 1;
+        fixtureDef.density = 1/300;
+        fixtureDef.friction = 3;
+        fixtureDef.restitution = 0;
         body = physics.world.createBody(def);
-        body.createFixture(fixtureDef).setUserData("Kubik");
+        body.createFixture(fixtureDef).setUserData("Hero");
 
         shape.dispose();
 
@@ -101,19 +101,19 @@ public class MyGdxGame extends ApplicationAdapter {
         myInputProcessor = new MyInputProcessor();
         Gdx.input.setInputProcessor(myInputProcessor);
 
-        music = Gdx.audio.newMusic(Gdx.files.internal("stray-the-way-you-compute-tonight.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/stray-the-way-you-compute-tonight.mp3"));
         music.setVolume(0.05f);
         music.setLooping(true);
         music.play();
 
-        sound = Gdx.audio.newSound(Gdx.files.internal("stray-droid-reaction-heart-sound-effect.mp3"));
+        sound = Gdx.audio.newSound(Gdx.files.internal("sounds/stray-droid-reaction-heart-sound-effect.mp3"));
 
         batch = new SpriteBatch();
         img = new Texture("Genesis 32X SCD - The Flintstones - Stage 03.png");
         coinImg = new Texture("coin-sprite-animation.png");
-        stand = new MyAtlasAnimation("atlas/fred.atlas", "stand", 2, false, "");
-        walk = new MyAtlasAnimation("atlas/fred.atlas", "walk", 10, true, "single_on_dirty_stone_step_flip_flop_007_30443.mp3");
-        jump = new MyAtlasAnimation("atlas/fred.atlas", "jump", 7, true, "cartoon-spring-boing-03.mp3");
+        stand = new MyAtlasAnimation("atlas/fred.atlas", "stand", 2, false, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3");
+        walk = new MyAtlasAnimation("atlas/fred.atlas", "walk", 12, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3");
+        jump = new MyAtlasAnimation("atlas/fred.atlas", "jump", 7, true, "sounds/cartoon-spring-boing-03.mp3");
         tmpA = stand;
 
         camera = new OrthographicCamera();
@@ -193,7 +193,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        batch.draw(img, 0, 0, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
         batch.draw(tmpA.startAnimation(), x, y);
         batch.end();
 
