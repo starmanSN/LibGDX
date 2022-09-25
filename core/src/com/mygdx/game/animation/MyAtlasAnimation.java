@@ -42,6 +42,10 @@ public class MyAtlasAnimation {
         }
     }
 
+    public void putTime(float time) {
+        this.time = time;
+    }
+
     public void dispose() {
         this.atlas.dispose();
         sound.dispose();

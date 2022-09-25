@@ -1,37 +1,33 @@
-package com.mygdx.game;
+package com.mygdx.game.screens;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.MyInputProcessor;
+import com.mygdx.game.Physics;
 import com.mygdx.game.animation.MyAtlasAnimation;
 import com.mygdx.game.enums.HeroActions;
 
 import java.awt.*;
 import java.util.HashMap;
 
-public class MyGdxGame extends ApplicationAdapter {
+public class GameScreen implements Screen {
+
+    Game game;
     private SpriteBatch batch;
-    private ShapeRenderer shapeRenderer;
     private Texture img, coinImg;
     private HashMap<HeroActions, MyAtlasAnimation> manAssets;
     private Music music;
@@ -46,11 +42,17 @@ public class MyGdxGame extends ApplicationAdapter {
     private TiledMap map;
     private OrthogonalTiledMapRenderer mapRenderer;
     private HeroActions actions;
+    private int[] front, tL;
 
-    @Override
-    public void create() {
+    public GameScreen(Game game) {
+        this.game = game;
         map = new TmxMapLoader().load("map/map3.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
+
+        front = new int[1];
+        front[0] = map.getLayers().getIndex("front");
+        tL = new int[1];
+        tL[0] = map.getLayers().getIndex("t0");
         physics = new Physics();
 
         Array<RectangleMapObject> objects = map.getLayers().get("env").getObjects().getByType(RectangleMapObject.class);
@@ -84,16 +86,21 @@ public class MyGdxGame extends ApplicationAdapter {
     }
 
     @Override
-    public void render() {
+    public void show() {
+
+    }
+
+    @Override
+    public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
 
-        camera.position.x = body.getPosition().x;
-        camera.position.y = body.getPosition().y;
+        camera.position.x = body.getPosition().x * physics.PPM;
+        camera.position.y = body.getPosition().y * physics.PPM;
         camera.zoom = 0.75f;
         camera.update();
 
         mapRenderer.setView(camera);
-        mapRenderer.render();
+        mapRenderer.render(tL);
 
         manAssets.get(actions).setTime(Gdx.graphics.getDeltaTime());
         body.applyForceToCenter(myInputProcessor.getVector(), true);
@@ -107,20 +114,21 @@ public class MyGdxGame extends ApplicationAdapter {
         if (!manAssets.get(actions).startAnimation().isFlipX() & body.getLinearVelocity().x < -0.6f) {
             manAssets.get(actions).startAnimation().flip(true, false);
         }
-        if (manAssets.get(actions).startAnimation().isFlipX() & body.getLinearVelocity().x < 0.6f) {
+        if (manAssets.get(actions).startAnimation().isFlipX() & body.getLinearVelocity().x > 0.6f) {
             manAssets.get(actions).startAnimation().flip(true, false);
         }
 
-        float x = body.getPosition().x - 2.5f / camera.zoom;
-        float y = body.getPosition().y - 2.5f / camera.zoom;
+        float x = body.getPosition().x * physics.PPM - 2.5f / camera.zoom;
+        float y = body.getPosition().y * physics.PPM - 2.5f / camera.zoom;
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        batch.draw(img, 0, 0, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
+//        batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(manAssets.get(actions).startAnimation(), x, y);
         batch.end();
 
-
+        mapRenderer.render(front);
+        Gdx.graphics.setTitle(String.valueOf(body.getLinearVelocity()));
         physics.step();
         physics.debugDraw(camera);
     }
@@ -129,6 +137,21 @@ public class MyGdxGame extends ApplicationAdapter {
     public void resize(int width, int height) {
         camera.viewportHeight = height;
         camera.viewportWidth = width;
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     @Override
