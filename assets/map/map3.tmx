@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="51" height="8" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="6">
+ <tileset firstgid="1" name="SeekPng.com_jungle-png_1112550" tilewidth="16" tileheight="16" tilecount="1540" columns="55">
+  <image source="SeekPng.com_jungle-png_1112550.png" width="885" height="460"/>
+ </tileset>
+ <layer id="1" name="Слой тайлов 1" width="51" height="8">
+  <data encoding="base64" compression="zlib">
+   eJztz10OATEUQOF2DxQ78bsCip0wwwoodsIMm3QafbgRTa7Eg4fe5EtnziSd1pgy/zhDjDDG5O15+sW3T+/RTHGGjjWmC4ee4ERzmd7HwL722WCLCjV2aa1T0/Qq06O94i5zzrKAx1LwovlMX2Gd7nLFDQ1a3NPapqbpTaZHD8VdDpzliICTEEQLmX7GxSp+UqbMD+YJXIkw8g==
+  </data>
+ </layer>
+ <objectgroup id="3" name="dyn">
+  <object id="1" x="222" y="-95" width="54" height="51">
+   <properties>
+    <property name="BodyType" value="DynamicBody"/>
+    <property name="density" type="float" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="hero">
+  <object id="2" name="Hero" x="420" y="-184" width="63" height="44"/>
+ </objectgroup>
+ <objectgroup id="5" name="env">
+  <object id="3" x="3" y="44.5" width="398" height="35.5"/>
+  <object id="4" x="533" y="45" width="266" height="35"/>
+  <object id="5" x="393" y="45" width="143" height="4"/>
+ </objectgroup>
+ <layer id="2" name="Слой тайлов 2" width="51" height="8">
+  <data encoding="base64" compression="zlib">
+   eJztz8cJwDAUBNF/UZ/OqSHn1JBzKsdThAUWaODdd0X05SgRFx58BAgRIUaCFJnSOOKjcjYWKFGhRoMWHXoMGA34MrFxxoIVG3YcOHHhxmPAF5vN9t9e8nkUwg==
+  </data>
+ </layer>
+</map>
