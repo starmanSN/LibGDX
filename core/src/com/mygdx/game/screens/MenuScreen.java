@@ -3,17 +3,21 @@ package com.mygdx.game.screens;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MenuScreen implements Screen {
 
-    Game game;
-    Texture background, icon;
-    SpriteBatch batch;
-    int x, y;
-    Rectangle rectangle;
+    private Game game;
+    private Texture background, icon;
+    private SpriteBatch batch;
+    private int x, y;
+    private Rectangle rectangle;
+    private Music music;
+    private Sound sound;
 
     public MenuScreen(Game game) {
         batch = new SpriteBatch();
@@ -23,6 +27,7 @@ public class MenuScreen implements Screen {
         x = Gdx.graphics.getWidth() / 2 - icon.getWidth() / 2;
         y = Gdx.graphics.getWidth() / 2 - icon.getWidth() / 2;
         rectangle = new Rectangle(x, y, icon.getWidth(), icon.getHeight());
+
     }
 
     @Override
@@ -70,6 +75,5 @@ public class MenuScreen implements Screen {
         this.background.dispose();
         this.icon.dispose();
         this.batch.dispose();
-
     }
 }

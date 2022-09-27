@@ -5,15 +5,34 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
+
+import java.util.Iterator;
 
 public class Physics {
-    public final float PPM = 50;
+    public final MyContactListener contactListener;
+    public static final float PPM = 80;
     final World world;
     private final Box2DDebugRenderer debugRenderer;
 
     public Physics() {
         world = new World(new Vector2(0, -9.81f), true);
         debugRenderer = new Box2DDebugRenderer();
+        contactListener = new MyContactListener();
+        world.setContactListener(contactListener);
+    }
+
+    public Array<Body> getBodies(String name) {
+        Array<Body> tmp = new Array<>();
+        world.getBodies(tmp);
+        Iterator<Body> iterator = tmp.iterator();
+        while (iterator.hasNext()) {
+            Body body = iterator.next();
+            if (!body.getUserData().equals("coins")) {
+                iterator.remove();
+            }
+        }
+        return tmp;
     }
 
     public Body addObject(RectangleMapObject object) {
@@ -40,10 +59,21 @@ public class Physics {
         if (object.getName() != null) name = object.getName();
         Body body;
         body = world.createBody(def);
-        body.setUserData("body");
+        body.setUserData(name);
         body.createFixture(fixtureDef).setUserData(name);
+
+        if (name.equals("Hero")) {
+            polygonShape.setAsBox(rect.width / 3 / PPM, rect.height / 10 / PPM, new Vector2(0, -rect.width / 2), 0);
+            body.createFixture(fixtureDef).setUserData("legs");
+            body.getFixtureList().get(1).setSensor(true);
+        }
+
         polygonShape.dispose();
         return body;
+    }
+
+    public void removeBody(Body body) {
+        world.destroyBody(body);
     }
 
     public void debugDraw(OrthographicCamera camera) {

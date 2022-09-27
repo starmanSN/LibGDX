@@ -22,16 +22,16 @@ public class MyInputProcessor implements InputProcessor {
 
         switch (inKey) {
             case "LEFT":
-                outForce.add(-0.5f, 0);
+                outForce.add(-0.05f, 0);
                 break;
             case "RIGHT":
-                outForce.add(0.5f, 0);
+                outForce.add(0.05f, 0);
                 break;
             case "DOWN":
-                outForce.add(0, -0.5f);
+                outForce.add(0, -0.1f);
                 break;
             case "SPACE":
-                outForce.add(0, 1.5f);
+                outForce.add(0, 2.52f);
                 break;
         }
         return true;
