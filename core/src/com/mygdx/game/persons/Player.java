@@ -23,10 +23,12 @@ public class Player {
     private Body body;
     private Dir dir;
     private static float dScale = 1;
+    private float hitPoints, live;
 
     public enum Dir {LEFT, RIGHT}
 
     public Player(Body body) {
+        hitPoints = live = 100;
         this.body = body;
         manAssets = new HashMap<>();
         atl = new TextureAtlas("atlas/fred.atlas");
@@ -37,6 +39,11 @@ public class Player {
         baseAnm = manAssets.get(HeroActions.STAND);
         loop = true;
         dir = Dir.LEFT;
+    }
+
+    public float getHit(float damage) {
+        hitPoints -= damage;
+        return hitPoints;
     }
 
     public boolean isCanJump() {

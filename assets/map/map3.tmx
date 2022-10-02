@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="62" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="39">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="47">
  <tileset firstgid="1" name="SeekPng.com_jungle-png_1112550" tilewidth="16" tileheight="16" tilecount="1540" columns="55">
   <image source="SeekPng.com_jungle-png_1112550.png" width="885" height="460"/>
  </tileset>
  <tileset firstgid="1541" name="NicePng_lava-png_2334439" tilewidth="16" tileheight="16" tilecount="460" columns="46">
   <image source="NicePng_lava-png_2334439.png" width="750" height="160"/>
  </tileset>
- <layer id="1" name="front" width="62" height="24" offsetx="0" offsety="47">
+ <layer id="1" name="front" width="140" height="24" offsetx="0" offsety="47">
   <data encoding="base64" compression="zlib">
-   eJzt09kuA1Ecx/FTOt7A9iQegsG9JbGrSmi5smtnWm4t0RbFDS2PYH0D+/IKXFpvfScZcYKRkUykF/9f8snJ/HIy5/ybjlISiUQikUgkEolEIpFI/jv3hlIPiJQF874O3tWJLnSjB73oQ79zDgaMYM4qpWSYKYscVrGGdeSxgU1s/TJ3S7lSrWhDO+rCwdxrjDPHMYFJTGEaM5hFAklYsI2/7z/FGc5xgUtc4Ro3uMUdKkNKVaFa4zwvMOsilrCMGrf/2Os814a+z2Xx+9jhzzWFNOYwjyH2DCOGOEbcNe52fvqYR+8Y/XqfH76feu7dABONGlPrTI++Cc2IVPC9IIpB7DPbAQ5xpK3HOME25+6ggCJ23bXodn76gkfv2PPxn0tw7yQs2BpL6yyPPoU0Vpg1gyxyeGS2JzzjRVtf8RbQtyKRlHreARpmZ2E=
+   eJzt1UdOw1AYRWEDDjugrYRFQIA5RaJXCQKM6MUJMKWI3iZAYAnUHdDLFmBInXIsGWEFjAKOabpH+mTlV/ycF1uJYSillFJKKaWUUkoppZRSSimllFJKKfV/ug4Zxg0a01OzXiVrVaEaNahFHerRYF8HTaHUXMtPqd63+loz3INZzGEeC1jEEpaxgtUPnpfSDMMoQzkqkG9+32f/yX7rvru4V93oQS/60I8BDGIIw7AQDX3+/Yc4wjFOcIoznOMCl7hCVpphZCPHxX49znc1gUlMIdeZv7zXfp2X9nZfFt9v1Hw9xjCCUYyZwe/b7/mJ+3af77X2d9SKNkTQjg7n2O7MkplHPOa2zoTrWe/83hdwvwsRRpFL2DULe8yLUYLGTP7X0IwWbPNM7GAXe67jPg7M4Pcd5Pl+1/bTGtaxgTg2nWPcmSUz3/CY27aS+AxD3O9hWIi6WK6Z5TGPYQTTPCMzmMUcbnkm7nCPB9fxEU9m8PsO8ny/ayullFJ/vWfhucyq
   </data>
  </layer>
  <objectgroup id="3" name="dyn">
@@ -108,17 +108,16 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="38" name="lava" x="800.091" y="378.273" width="65.375" height="2.70455">
+ </objectgroup>
+ <objectgroup id="7" name="damageGround">
+  <object id="39" name="damageGround" x="800.397" y="348.499" width="64.7455" height="20.1256">
    <properties>
-    <property name="BodyType" value="DynamicBody"/>
-    <property name="friction" type="float" value="0"/>
-    <property name="gravityScale" type="float" value="1"/>
-    <property name="restitution" type="float" value="0.25"/>
+    <property name="damage" type="float" value="1"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="4" name="hero">
-  <object id="2" name="Hero" x="420" y="102.833" width="13.6667" height="13.1667">
+  <object id="2" name="Hero" x="441.333" y="106.833" width="13.6667" height="13.1667">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="friction" type="float" value="0"/>
@@ -136,7 +135,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="4" name="ground" x="531.091" y="348.545" width="269.303" height="35">
+  <object id="4" name="ground" x="536.083" y="348.5" width="264.311" height="35.0451">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -144,7 +143,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="5" name="ground" x="393.08" y="348.5" width="143" height="4">
+  <object id="5" name="ground" x="400.008" y="348.504" width="136.072" height="3.99609">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -176,7 +175,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="27" x="-0.333333" y="-1.08333" width="993" height="1.5">
+  <object id="27" x="-0.333333" y="-1.08333" width="2242" height="1.5">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -192,7 +191,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="29" x="990.892" y="0.52727" width="0.434783" height="355.472">
+  <object id="29" x="1999.89" y="3.52727" width="0.434783" height="355.472">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -200,7 +199,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="30" name="ground" x="865.015" y="349.53" width="126.758" height="35">
+  <object id="30" name="ground" x="865.087" y="348.503" width="1373.69" height="36.0271">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -208,18 +207,27 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="31" name="ground" x="794.201" y="378.693" width="79.1216" height="2.27273">
+  <object id="31" name="ground" x="792.968" y="368.436" width="79.1216" height="2.27273">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
+  </object>
+  <object id="46" name="ground" x="1838.91" y="348.545">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+   <polyline points="0,0 98.3636,-96.7273 160.727,-33.4545"/>
   </object>
  </objectgroup>
- <layer id="2" name="t0" width="62" height="24" offsetx="3" offsety="45.5">
+ <layer id="2" name="t0" width="140" height="24" offsetx="3" offsety="45.5">
   <data encoding="base64" compression="zlib">
-   eJzt10lPFEEchvF2pgcXvMoBcT2jIh5YPoB4BXFJREOQzQW3O3hQkUUlEYyJa9QoEnAFObIKCUhQQRM0ARLF9e6CeuCpTFUo2o6hCROpYf7JL0V3pyv1dnV1MZblrXb5LSsL1ajBbuzxe+zEoHLm7cWzeZD/vMyo8jpbkf1CGObu0ebWOd+92rWwK3syq1DL8V3773kPt0oh47KAZY3aQSMubUzgf48ytHXaZ1llKEcFKpFkB6lSx87zJpQac5b8Xp8iXyla0Io2tKMDnb6p96p7TMwtSoxfrGOxntV+9Y2M3/EDPzGOX/iNP77gt1+tfxP3NzF+ff2qv+M5vw7rsQEJ2IhEbJL3qNwm7m89ct5qtRx9nNuLXOQhHwUo1LINa89IfOP7DMw9ou1VYvw5uITLuIKruIbr/uDaV8S+twA++A1c32LvEvtTP7me4wVeYgCDeIXXjsxOJleAOYvCQizCYixBNJbakxn38wwO4CCKpvF+nzTgudSTrwH3cB8P8BCP8BiNHt9nkdmE3O/I9R5j+ICP+ITP+IKvM8g9l2szedKwBbGs9eWIwwqsxCqsxprA1Pc8m+MTZMuRbS5tHvJRgELsk9f+VXqfbmMKVRXTdwmOI51xZmArMrEN27EDO3GDsd3ELVyUmaZD1CH6P4wjOIpjMlOqbJNt9zHNRq11+W3RRN9P0IwyrpejApU4g7M4hyoMkfcN3qLfY+7b9H9H+1+hDikyt8icaruPKdTVQo5WtKEdHejEU3Sh28Pvsbm+tiMVqUiZWxPK+rI1
+   eJzt2kds01Acx3E3cdhXOLDbM5sDBc4UrmwkCkKliz3OFA6sDobEEBJTgKAgNi0cOwEppSpbAiRAYq8rmwPfh99THGNKnSgJav4/6SM3jpxYfr86fk4sK1jmhy2rELuxBwuwMBzwRSTdPt6etOGm9Ebyl+zS3TA98S5VZ/ZKXyQ6Ude5xHt+aXM9J5H8jh3riFLL41P2n+cZiURlIt3oH7GsZ7bjqc9yQCTTeyn5H7M1ZFmVqEI1ajDBdpiYx971ku4bM9aFev6zmV5sQQMa0YRmtKA1FL+t2Ub6kl1R466uU9T1ipk3f6Ibn/EFX/EN3/EDP0POXMpc38g8O3uixt19fWL+HsH6kRiF0RiDsRiH8Xob0xeZZ2dPovo8Uesa/3bWLUYxSlCKMpS7OvHE1S01Z2qXvmRFovpcYebKatyLsB8HcBCHcBhHws61jaHm3zkIISzXL1kTNYdW8+QO+nALt3EHd3EP9/HA0xUvSeYyBQUZeN8I54ge6Ile6I0+6It+dqwbS+nOMizHii58Dm2SPqU061BhZaYzZ+jFWZzDeVzARVzCZdQF/NxRXZG+pCbqvKK6Uod6KzOdeU4fXuAlXuE13uAt3uF9An2RpCamK7k5jnR2poAeTMU0DORaZhAGYwiGYhiGIzcS/3m0iMcb6USRXhazLEEpylCOJfq5zuJ+Tb99ksTiPq+Yrng7k+pUMCbrsQHTGd8ZmIlZmI05mIt5OMqYHsNx7NNd6AqVlbz+KqzGGqzVXZikl/m2/z4lGvObnkTuKQbdNpn38ou6Z66Oh/peTx2fyXbnXVE+sP5j8m8dlzyf7wzr2ZcruIpKnq9CNWqwDduxAzvxkGPxCI/REbAvJ3j9k657PafV8bCc45Fvx3rj3adEY37Tk8g9xaDbJvNefvH+b/2rK0qelq40MP6NaEIzWtCKa7iOGwG+n5ZrF4lEIpFIJBJJOvILKlnSAw==
   </data>
  </layer>
 </map>

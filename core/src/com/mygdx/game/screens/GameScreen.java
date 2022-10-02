@@ -21,6 +21,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.Label;
 import com.mygdx.game.MyContactListener;
 import com.mygdx.game.MyInputProcessor;
 import com.mygdx.game.Physics;
@@ -47,8 +48,11 @@ public class GameScreen implements Screen {
     private int[] front, tL;
     private final Player player;
     public static List<Body> bodyToDelete;
+    private Label font;
 
     public GameScreen(Game game) {
+        font = new Label(12);
+
         bodyToDelete = new ArrayList<>();
         coinAnimation = new MyAnimation("coin-sprite-animation.png", 1, 10, 6, Animation.PlayMode.LOOP);
         this.game = game;
@@ -66,6 +70,13 @@ public class GameScreen implements Screen {
         for (int i = 0; i < objects.size; i++) {
             physics.addObject(objects.get(i));
         }
+
+        objects.clear();
+        objects.addAll(map.getLayers().get("damageGround").getObjects().getByType(RectangleMapObject.class));
+        for (int i = 0; i < objects.size; i++) {
+            physics.addDmgObjects(objects.get(i));
+        }
+
         body = physics.addObject((RectangleMapObject) map.getLayers().get("hero").getObjects().get("Hero"));
         body.setFixedRotation(true);
         player = new Player(body);
@@ -118,6 +129,7 @@ public class GameScreen implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+        font.draw(batch, "HP " + player.getHit(0), (int) tmp.x, (int) (tmp.y + tmp.height * Physics.PPM));
 //        batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(player.getFrame(), tmp.x, tmp.y, tmp.width * Physics.PPM, tmp.height * Physics.PPM);
 
@@ -146,12 +158,15 @@ public class GameScreen implements Screen {
         physics.debugDraw(camera);
 
         if (MyContactListener.count >= 5) {
-            music.stop();
+            dispose();
             game.setScreen(new VictoryScreen(game));
         }
-        if (body.getUserData().equals("Hero") && body.getUserData().equals("lava")) {
-            music.stop();
-            game.setScreen(new GameOverScreen(game));
+
+        if (MyContactListener.isDamage) {
+            if (player.getHit(1) < 1) {
+                dispose();
+                game.setScreen(new GameOverScreen(game));
+            }
         }
     }
 
@@ -182,6 +197,8 @@ public class GameScreen implements Screen {
         sound.dispose();
         map.dispose();
         mapRenderer.dispose();
-        physics.dispose();
+        this.physics.dispose();
+        this.player.dispose();
+        this.font.dispose();
     }
 }

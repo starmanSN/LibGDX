@@ -72,6 +72,30 @@ public class Physics {
         return body;
     }
 
+    public void addDmgObjects(RectangleMapObject object) {
+        Rectangle rect = object.getRectangle();
+        String type = (String) object.getProperties().get("BodyType");
+        BodyDef def = new BodyDef();
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape polygonShape = new PolygonShape();
+
+        def.type = BodyDef.BodyType.StaticBody;
+        def.position.set((rect.x + rect.width / 2) / PPM, (rect.y + rect.height / 2) / PPM);
+        polygonShape.setAsBox(rect.width / 2 / PPM, rect.height / 2 / PPM);
+        fixtureDef.shape = polygonShape;
+
+        String name = "damageGround";
+        Body body;
+        body = world.createBody(def);
+        body.setUserData(name);
+        body.createFixture(fixtureDef).setUserData(name);
+        body.getFixtureList().get(0).setSensor(true);
+        body.createFixture(fixtureDef).setUserData(name);
+
+        polygonShape.dispose();
+    }
+
+
     public void removeBody(Body body) {
         world.destroyBody(body);
     }
@@ -87,5 +111,6 @@ public class Physics {
     public void dispose() {
         world.dispose();
         debugRenderer.dispose();
+        MyContactListener.isDamage = false;
     }
 }
