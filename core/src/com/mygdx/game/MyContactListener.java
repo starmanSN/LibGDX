@@ -50,14 +50,12 @@ public class MyContactListener implements ContactListener {
             cnt--;
         }
         if (a.getUserData().equals("legs") && b.getUserData().equals("damageGround")) {
-            sound.stop();
+            sound.pause();
             isDamage = false;
-            sound.dispose();
         }
         if (b.getUserData().equals("legs") && a.getUserData().equals("damageGround")) {
-            sound.stop();
+            sound.pause();
             isDamage = false;
-            sound.dispose();
         }
     }
 

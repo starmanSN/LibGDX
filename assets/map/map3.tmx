@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="47">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="49">
  <tileset firstgid="1" name="SeekPng.com_jungle-png_1112550" tilewidth="16" tileheight="16" tilecount="1540" columns="55">
   <image source="SeekPng.com_jungle-png_1112550.png" width="885" height="460"/>
  </tileset>
@@ -127,26 +127,26 @@
   </object>
  </objectgroup>
  <objectgroup id="5" name="env">
-  <object id="3" name="ground" x="2" y="348.5" width="398" height="35.5">
+  <object id="3" name="ground" x="2" y="348.528" width="398.35" height="35.4722">
    <properties>
     <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
+    <property name="friction" type="float" value="2"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="4" name="ground" x="536.083" y="348.5" width="264.311" height="35.0451">
+  <object id="4" name="ground" x="536.083" y="348.522" width="265.978" height="35.0229">
    <properties>
     <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
+    <property name="friction" type="float" value="2"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="5" name="ground" x="400.008" y="348.504" width="136.072" height="3.99609">
+  <object id="5" name="ground" x="400.008" y="348.526" width="136.3" height="3.97387">
    <properties>
     <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
+    <property name="friction" type="float" value="2"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
@@ -199,10 +199,10 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="30" name="ground" x="865.087" y="348.503" width="1373.69" height="36.0271">
+  <object id="30" name="ground" x="864.287" y="348.503" width="1374.49" height="36.0271">
    <properties>
     <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
+    <property name="friction" type="float" value="2"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
@@ -227,7 +227,7 @@
  </objectgroup>
  <layer id="2" name="t0" width="140" height="24" offsetx="3" offsety="45.5">
   <data encoding="base64" compression="zlib">
-   eJzt2kds01Acx3E3cdhXOLDbM5sDBc4UrmwkCkKliz3OFA6sDobEEBJTgKAgNi0cOwEppSpbAiRAYq8rmwPfh99THGNKnSgJav4/6SM3jpxYfr86fk4sK1jmhy2rELuxBwuwMBzwRSTdPt6etOGm9Ebyl+zS3TA98S5VZ/ZKXyQ6Ude5xHt+aXM9J5H8jh3riFLL41P2n+cZiURlIt3oH7GsZ7bjqc9yQCTTeyn5H7M1ZFmVqEI1ajDBdpiYx971ku4bM9aFev6zmV5sQQMa0YRmtKA1FL+t2Ub6kl1R466uU9T1ipk3f6Ibn/EFX/EN3/EDP0POXMpc38g8O3uixt19fWL+HsH6kRiF0RiDsRiH8Xob0xeZZ2dPovo8Uesa/3bWLUYxSlCKMpS7OvHE1S01Z2qXvmRFovpcYebKatyLsB8HcBCHcBhHws61jaHm3zkIISzXL1kTNYdW8+QO+nALt3EHd3EP9/HA0xUvSeYyBQUZeN8I54ge6Ile6I0+6It+dqwbS+nOMizHii58Dm2SPqU061BhZaYzZ+jFWZzDeVzARVzCZdQF/NxRXZG+pCbqvKK6Uod6KzOdeU4fXuAlXuE13uAt3uF9An2RpCamK7k5jnR2poAeTMU0DORaZhAGYwiGYhiGIzcS/3m0iMcb6USRXhazLEEpylCOJfq5zuJ+Tb99ksTiPq+Yrng7k+pUMCbrsQHTGd8ZmIlZmI05mIt5OMqYHsNx7NNd6AqVlbz+KqzGGqzVXZikl/m2/z4lGvObnkTuKQbdNpn38ou6Z66Oh/peTx2fyXbnXVE+sP5j8m8dlzyf7wzr2ZcruIpKnq9CNWqwDduxAzvxkGPxCI/REbAvJ3j9k657PafV8bCc45Fvx3rj3adEY37Tk8g9xaDbJvNefvH+b/2rK0qelq40MP6NaEIzWtCKa7iOGwG+n5ZrF4lEIpFIJBJJOvILKlnSAw==
+   eJzt2kds02AYxnE3cdhXOLDbM5sDBc4UjmyQKAiVLvY4UzgwuhgSQ0hMAYKC2LRw7KRILVXZEiABEntd2Rz4v8Sf4pq0iYuSoOZ9pJ/cDDuO/dTx58Sy/GVR0LJysRf7sBhLgj4Xounx8fakFbe0N5pOssfphumJdyqd2a990ThpcR1LvMeXVtdjGs2f2JGOiCpun7H/Ps5oNJLJdGNgyLKe22HPokwHhVK9lpr/MaUByypDOSpQiUl2mIm57b1f03Nj9nWuM/7ZRi+2oxZ1qEcDGtEU6DivmUf7kl6R/S7nKXK+YsbNn+nGF3zFN3zHD/zEr0B4LGXOb3ScnT6R/e4+PzF/j+L+0RiDsRiH8ZiAic48pi86zk6ftDjHiSrX/m/jvmXIRwEKUYRiVyeeurolY6Y27UtapMU5Vpixsuz3PBzEIRzGERzFsWD43MaQ8XcGAgjq+UvaRMbQMk5upw+3cQd3cQ/38QAPPV3x0qQu05CTgtcNcYzohd7og77oh/4YYEe6sYLurMQqrI7jc2ir9imh2YgSKzWdOUcvzuMCLuISLuMKrqLa5+eOdEX7kpjIcUW6Uo0aKzWdeUEfXuIVXuMN3uId3uNDN/qiSUxMVzIzwpLZmRx6MB0zMJhzmSEYimEYjhEYicxQx8+jpdzeQifynGk+0wIUogjFWO481lXcy4y2TppI3McV0xVvZxKdEvbJJmzGLPbvbMzBXMzDfCzAQhxnn57ASRxwuhAPyRqWvxbrsB4bnC5McabZdvR16m7Mb3rkmuLMUOz31tm88VyP9Pv8WJFr5rI95Hs92T5T7a67Ij5y/6d/f+kOyYrynWEN63IN11HG4+WoQCV2YCd2YTcesS0e4wnaffblFMs/7brWc1a2hxXeHtl2pDfedepuzG965JpiaSj2e+ts3niuR/p9fqx4/7didUVkOZKVWrZZHerRgEY04QaacdPH99N67qLRaDQajUajSUZ+A/u52Ts=
   </data>
  </layer>
 </map>

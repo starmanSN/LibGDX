@@ -200,5 +200,6 @@ public class GameScreen implements Screen {
         this.physics.dispose();
         this.player.dispose();
         this.font.dispose();
+
     }
 }

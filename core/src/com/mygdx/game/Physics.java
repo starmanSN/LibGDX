@@ -112,5 +112,6 @@ public class Physics {
         world.dispose();
         debugRenderer.dispose();
         MyContactListener.isDamage = false;
+        contactListener.dispose();
     }
 }
