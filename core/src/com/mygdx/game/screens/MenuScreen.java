@@ -2,6 +2,7 @@ package com.mygdx.game.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
@@ -28,6 +29,11 @@ public class MenuScreen implements Screen {
         y = Gdx.graphics.getWidth() / 2 - icon.getWidth() / 2;
         rectangle = new Rectangle(x, y, icon.getWidth(), icon.getHeight());
 
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/stray-elliots-room-radio-music-2-refresh.mp3"));
+        music.setVolume(0.15f);
+        music.setLooping(true);
+        music.play();
+        sound = Gdx.audio.newSound(Gdx.files.internal("sounds/stray-droid-reaction-heart-sound-effect.mp3"));
     }
 
     @Override
@@ -38,8 +44,11 @@ public class MenuScreen implements Screen {
     @Override
     public void render(float delta) {
         batch.begin();
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+            sound.play(0.1f, 1, 0);
+        }
         batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch.draw(icon, x, y);
+        batch.draw(icon, x, y / 1.5f);
         batch.end();
 
         if (Gdx.input.isTouched()) {
@@ -75,5 +84,7 @@ public class MenuScreen implements Screen {
         this.background.dispose();
         this.icon.dispose();
         this.batch.dispose();
+        this.music.dispose();
+        this.sound.dispose();
     }
 }
