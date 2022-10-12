@@ -1,0 +1,111 @@
+
+Fang.png
+size: 128, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+jump
+  rotate: false
+  xy: 2, 19
+  size: 33, 28
+  orig: 33, 28
+  offset: 0, 0
+  index: 3
+jump
+  rotate: false
+  xy: 86, 21
+  size: 33, 27
+  orig: 33, 27
+  offset: 0, 0
+  index: 1
+jump
+  rotate: false
+  xy: 93, 222
+  size: 28, 32
+  orig: 28, 32
+  offset: 0, 0
+  index: 2
+jump
+  rotate: false
+  xy: 93, 187
+  size: 26, 33
+  orig: 26, 33
+  offset: 0, 0
+  index: 4
+punch
+  rotate: false
+  xy: 2, 154
+  size: 49, 47
+  orig: 49, 47
+  offset: 0, 0
+  index: 2
+punch
+  rotate: false
+  xy: 90, 105
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: 1
+run
+  rotate: false
+  xy: 2, 203
+  size: 50, 51
+  orig: 50, 51
+  offset: 0, 0
+  index: 3
+run
+  rotate: false
+  xy: 2, 102
+  size: 47, 50
+  orig: 47, 50
+  offset: 0, 0
+  index: 7
+run
+  rotate: false
+  xy: 2, 49
+  size: 40, 51
+  orig: 40, 51
+  offset: 0, 0
+  index: 2
+run
+  rotate: false
+  xy: 44, 50
+  size: 41, 50
+  orig: 41, 50
+  offset: 0, 0
+  index: 4
+run
+  rotate: false
+  xy: 51, 102
+  size: 37, 50
+  orig: 37, 50
+  offset: 0, 0
+  index: 1
+run
+  rotate: false
+  xy: 54, 204
+  size: 37, 50
+  orig: 37, 50
+  offset: 0, 0
+  index: 6
+stand
+  rotate: false
+  xy: 53, 154
+  size: 38, 47
+  orig: 38, 47
+  offset: 0, 0
+  index: 2
+stand
+  rotate: false
+  xy: 44, 2
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: 3
+stand
+  rotate: false
+  xy: 87, 51
+  size: 38, 49
+  orig: 38, 49
+  offset: 0, 0
+  index: 1

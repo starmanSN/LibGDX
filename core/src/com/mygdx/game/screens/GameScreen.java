@@ -50,6 +50,7 @@ public class GameScreen implements Screen {
     public static List<Body> bodyToDelete;
     private Label font;
 
+
     public GameScreen(Game game) {
         font = new Label(12);
 
@@ -92,10 +93,10 @@ public class GameScreen implements Screen {
         sound = Gdx.audio.newSound(Gdx.files.internal("sounds/stray-droid-reaction-heart-sound-effect.mp3"));
 
         batch = new SpriteBatch();
-        img = new Texture("Genesis 32X SCD - The Flintstones - Stage 03.png");
+        img = new Texture("2109.w023.n001.1126B.p1.1126.jpg");
 
         camera = new OrthographicCamera();
-        camera.zoom = 0.35f;
+        camera.zoom = 0.45f;
     }
 
     @Override
@@ -106,8 +107,8 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
 
-        camera.position.x = body.getPosition().x * Physics.PPM;
-        camera.position.y = body.getPosition().y * Physics.PPM;
+        camera.position.x = body.getPosition().x * Physics.PPM + myInputProcessor.getCameraX();
+        camera.position.y = body.getPosition().y * Physics.PPM + myInputProcessor.getCameraY();
         camera.update();
 
         mapRenderer.setView(camera);
@@ -118,6 +119,7 @@ public class GameScreen implements Screen {
         if (MyContactListener.cnt < 1) {
             vector.set(vector.x, 0);
         }
+
         body.applyForceToCenter(vector, true);
         player.setFPS(body.getLinearVelocity(), true);
 
@@ -157,7 +159,7 @@ public class GameScreen implements Screen {
         physics.step();
         physics.debugDraw(camera);
 
-        if (MyContactListener.count >= 5) {
+        if (MyContactListener.count >= 15) {
             dispose();
             game.setScreen(new VictoryScreen(game));
         }
@@ -166,6 +168,7 @@ public class GameScreen implements Screen {
             if (player.getHit(1) < 1) {
                 dispose();
                 game.setScreen(new GameOverScreen(game));
+                MyContactListener.count = 0;
             }
         }
     }
@@ -200,5 +203,7 @@ public class GameScreen implements Screen {
         this.physics.dispose();
         this.player.dispose();
         this.font.dispose();
+        game.dispose();
+
     }
 }

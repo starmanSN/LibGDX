@@ -11,6 +11,7 @@ public class MyContactListener implements ContactListener {
     public static int count = 0;
     public static boolean isDamage;
     private Sound sound;
+    public static boolean onGround;
 
 
     public MyContactListener() {
@@ -24,9 +25,11 @@ public class MyContactListener implements ContactListener {
 
         if (a.getUserData().equals("legs") && b.getUserData().equals("ground")) {
             cnt++;
+            onGround = true;
         }
         if (b.getUserData().equals("legs") && a.getUserData().equals("ground")) {
             cnt++;
+            onGround = true;
         }
         if (a.getUserData().equals("legs") && b.getUserData().equals("damageGround")) {
             isDamage = true;
@@ -45,19 +48,19 @@ public class MyContactListener implements ContactListener {
 
         if (a.getUserData().equals("legs") && b.getUserData().equals("ground")) {
             cnt--;
+            onGround = false;
         }
         if (b.getUserData().equals("legs") && a.getUserData().equals("ground")) {
             cnt--;
+            onGround = false;
         }
         if (a.getUserData().equals("legs") && b.getUserData().equals("damageGround")) {
-            sound.stop();
+            sound.pause();
             isDamage = false;
-            sound.dispose();
         }
         if (b.getUserData().equals("legs") && a.getUserData().equals("damageGround")) {
-            sound.stop();
+            sound.pause();
             isDamage = false;
-            sound.dispose();
         }
     }
 

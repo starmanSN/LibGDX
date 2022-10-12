@@ -1,5 +1,6 @@
 package com.mygdx.game.persons;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -8,22 +9,24 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.mygdx.game.Physics;
+import com.mygdx.game.animation.MyAtlasAnimation;
 import com.mygdx.game.enums.HeroActions;
 
 import java.util.HashMap;
 
 public class Player {
-    HashMap<HeroActions, Animation<TextureRegion>> manAssets;
+    HashMap<HeroActions, MyAtlasAnimation> manAssets;
     private final float FPS = 1 / 7f;
     private float time;
-    public static boolean canJump;
-    private Animation<TextureRegion> baseAnm;
+    public static boolean canJump, isFire;
+    private Animation<TextureAtlas.AtlasRegion> baseAnm;
     private boolean loop;
     private TextureAtlas atl;
     private Body body;
     private Dir dir;
     private static float dScale = 1;
     private float hitPoints, live;
+    private Sound sound;
 
     public enum Dir {LEFT, RIGHT}
 
@@ -31,12 +34,13 @@ public class Player {
         hitPoints = live = 100;
         this.body = body;
         manAssets = new HashMap<>();
-        atl = new TextureAtlas("atlas/fred.atlas");
-        manAssets.put(HeroActions.JUMP, new Animation<TextureRegion>(FPS, atl.findRegions("jump")));
-        manAssets.put(HeroActions.RUN, new Animation<TextureRegion>(FPS, atl.findRegions("walk")));
-        manAssets.put(HeroActions.STAND, new Animation<TextureRegion>(FPS, atl.findRegions("stand")));
-        manAssets.put(HeroActions.SHOOT, new Animation<TextureRegion>(FPS, atl.findRegions("shoot")));
-        baseAnm = manAssets.get(HeroActions.STAND);
+        atl = new TextureAtlas("atlas/Fang.atlas");
+//        manAssets.put(HeroActions.JUMP, new Animation<TextureRegion>(FPS, atl.findRegions("jump")));
+        manAssets.put(HeroActions.JUMP, new MyAtlasAnimation("atlas/Fang.atlas", "jump", FPS, true, "sounds/cartoon-spring-boing-03.mp3"));
+        manAssets.put(HeroActions.RUN, new MyAtlasAnimation("atlas/Fang.atlas", "run", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
+        manAssets.put(HeroActions.STAND, new MyAtlasAnimation("atlas/Fang.atlas", "stand", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
+        manAssets.put(HeroActions.SHOOT, new MyAtlasAnimation("atlas/Fang.atlas", "shoot", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
+        baseAnm = manAssets.get(HeroActions.STAND).getAnimation();
         loop = true;
         dir = Dir.LEFT;
     }
@@ -46,11 +50,15 @@ public class Player {
         return hitPoints;
     }
 
+    public int getDir() {
+        return (dir == Dir.LEFT) ? -1 : 1;
+    }
+
     public boolean isCanJump() {
         return canJump;
     }
 
-    public static void setCanJump(boolean isJump) {
+    public void setCanJump(boolean isJump) {
         canJump = isJump;
     }
 
@@ -62,19 +70,26 @@ public class Player {
         this.loop = loop;
     }
 
-    public void setFPS(Vector2 vector, boolean onGround) {
+    public Body setFPS(Vector2 vector, boolean onGround) {
         if (vector.x > 0.1f) setDir(Dir.RIGHT);
         if (vector.x < -0.1f) setDir(Dir.LEFT);
         float tmp = (float) (Math.sqrt(vector.x * vector.x + vector.y * vector.y)) * 10;
         setState(HeroActions.STAND);
-        if (Math.abs(vector.x) > 0.25f && Math.abs(vector.y) < 10 && onGround) {
+        if (isFire) {
+            setState(HeroActions.SHOOT);
+            return body;
+        }
+        if (Math.abs(vector.x) > 0.2f && Math.abs(vector.y) < 10 && onGround) {
             setState(HeroActions.RUN);
             baseAnm.setFrameDuration(1 / tmp);
+            return null;
         }
-        if (Math.abs(vector.y) > 1 && canJump) {
+        if (Math.abs(vector.y) > 1 && !canJump) {
             setState(HeroActions.JUMP);
             baseAnm.setFrameDuration(FPS);
+            return null;
         }
+        return null;
     }
 
     public float setTime(float deltaTime) {
@@ -83,7 +98,7 @@ public class Player {
     }
 
     public void setState(HeroActions state) {
-        baseAnm = manAssets.get(state);
+        baseAnm = manAssets.get(state).getAnimation();
         switch (state) {
             case STAND:
                 loop = true;

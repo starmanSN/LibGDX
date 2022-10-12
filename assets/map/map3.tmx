@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="47">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="66">
  <tileset firstgid="1" name="SeekPng.com_jungle-png_1112550" tilewidth="16" tileheight="16" tilecount="1540" columns="55">
   <image source="SeekPng.com_jungle-png_1112550.png" width="885" height="460"/>
  </tileset>
@@ -8,7 +8,7 @@
  </tileset>
  <layer id="1" name="front" width="140" height="24" offsetx="0" offsety="47">
   <data encoding="base64" compression="zlib">
-   eJzt1UdOw1AYRWEDDjugrYRFQIA5RaJXCQKM6MUJMKWI3iZAYAnUHdDLFmBInXIsGWEFjAKOabpH+mTlV/ycF1uJYSillFJKKaWUUkoppZRSSimllFJKKfV/ug4Zxg0a01OzXiVrVaEaNahFHerRYF8HTaHUXMtPqd63+loz3INZzGEeC1jEEpaxgtUPnpfSDMMoQzkqkG9+32f/yX7rvru4V93oQS/60I8BDGIIw7AQDX3+/Yc4wjFOcIoznOMCl7hCVpphZCPHxX49znc1gUlMIdeZv7zXfp2X9nZfFt9v1Hw9xjCCUYyZwe/b7/mJ+3af77X2d9SKNkTQjg7n2O7MkplHPOa2zoTrWe/83hdwvwsRRpFL2DULe8yLUYLGTP7X0IwWbPNM7GAXe67jPg7M4Pcd5Pl+1/bTGtaxgTg2nWPcmSUz3/CY27aS+AxD3O9hWIi6WK6Z5TGPYQTTPCMzmMUcbnkm7nCPB9fxEU9m8PsO8ny/ayullFJ/vWfhucyq
+   eJzt2slSE0Ecx/GOmfgGoj6Bot5V1CfQKHcQDQiKWqVBq1TABZgQ8OhSAgLqRYNWuR5d8A1cUPEV9KQsevU7RVK0cSYZmZk0M9O/qk9N0mTpDk13/1MIoaOjE9XswE40YBd2Y4/SHkUrPxJC/MQc5rGAxYTqXq08p3AaWXThDM4q7ZG71K1R3QN32UQ/N6MeW7AV20LSd7vcxwMUMIWHeKS0R9FKC3PjEA4jg1a0hXi+6KyeRG3v0vk7fp/9VO9d+iwbbPw++6neu8J6lg1LVJ79gti79Fk2ulG9d9kljvtZWMZ8LinEeVxAN3rQm1TbpzjuZ2EZ82PmxhM8xTM8x4sq8yXI+qslGc/9LMpjDnoPy2MIs4klw9y+6t/L69Q4Qddf1nyZFsvzZQYT+vsjHYeUn6n0fIlv3NQBKzlTec23lBDf0enTOpnhtVrRhiNoRweO4pj1Pjie8ue9vMTvcfudsNQBXjPC72AUY7iNcUxgEndwF/cqzJcm/j6acTC5VANsN2rXd5VpktaF1VT7dPO76kEvLuISLuMK+tCPAZjIpf7/8e/wHh/wETP4hM/4gll8xTr22Tqsl1j3r/FZXccN3MSGYnvpsdb9jTZ7tMm8yhnL10HkMYRhI/hxV3t+aV+xNIjq3zd5qX3kOt5r/W63znUVZV22Zx3a7dZM02a938sY9iGN/ZK01JZ2aD+ARnSuZV/DCZzES+bEK7zGG+k6jbdG8OOu9vxshde122e81D5yHe+1fi9f56xab6p4u+CyvWDTbtWLbtfMfsY9ABM5iSm1mQ7tg8jjFnNkBKMYwxxzYh4LWJSuv/Db+HfcGYfxVWp3Grf8M6fnl67l7U6fmZfaR67j9f/+xCMqah8dHR2dWuYPKvMlKA==
   </data>
  </layer>
  <objectgroup id="3" name="dyn">
@@ -110,7 +110,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="damageGround">
-  <object id="39" name="damageGround" x="800.397" y="348.499" width="64.7455" height="20.1256">
+  <object id="39" name="damageGround" x="800.397" y="350.562" width="64.7455" height="20.1256">
    <properties>
     <property name="damage" type="float" value="1"/>
    </properties>
@@ -127,7 +127,31 @@
   </object>
  </objectgroup>
  <objectgroup id="5" name="env">
-  <object id="3" name="ground" x="2" y="348.5" width="398" height="35.5">
+  <object id="3" name="ground" x="1.81818" y="350.164" width="398.35" height="35.4722">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="2"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="4" name="ground" x="535.719" y="350.522" width="265.978" height="35.0229">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="2"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="5" name="ground" x="399.644" y="350.344" width="136.3" height="3.97387">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="2"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="24" name="ground" x="187.924" y="87.5833" width="128.303" height="22.1667">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -135,7 +159,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="4" name="ground" x="536.083" y="348.5" width="264.311" height="35.0451">
+  <object id="25" name="ground" x="136.031" y="187.917" width="74.0003" height="22.1667">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -143,31 +167,7 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="5" name="ground" x="400.008" y="348.504" width="136.072" height="3.99609">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
-    <property name="gravityScale" type="float" value="1"/>
-    <property name="restitution" type="float" value="0.25"/>
-   </properties>
-  </object>
-  <object id="24" x="187.924" y="87.5833" width="128.303" height="22.1667">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
-    <property name="gravityScale" type="float" value="1"/>
-    <property name="restitution" type="float" value="0.25"/>
-   </properties>
-  </object>
-  <object id="25" x="136.031" y="187.917" width="74.0003" height="22.1667">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
-    <property name="gravityScale" type="float" value="1"/>
-    <property name="restitution" type="float" value="0.25"/>
-   </properties>
-  </object>
-  <object id="26" x="295.667" y="190.917" width="106" height="8.83337">
+  <object id="26" name="ground" x="295.667" y="190.917" width="106" height="8.83337">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
@@ -199,10 +199,10 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="30" name="ground" x="865.087" y="348.503" width="1373.69" height="36.0271">
+  <object id="30" name="ground" x="864.662" y="350.503" width="768.058" height="36.0271">
    <properties>
     <property name="BodyType" value="StaticBody"/>
-    <property name="friction" type="float" value="0"/>
+    <property name="friction" type="float" value="2"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
@@ -215,19 +215,98 @@
     <property name="restitution" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="46" name="ground" x="1838.91" y="348.545">
+  <object id="51" name="ground" x="579.5" y="223.667" width="93.0003" height="29.9167">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="friction" type="float" value="0"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0.25"/>
    </properties>
-   <polyline points="0,0 98.3636,-96.7273 160.727,-33.4545"/>
+  </object>
+  <object id="52" name="ground" x="754.5" y="159.167" width="93.0003" height="31.9167">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="53" name="ground" x="899.5" y="96.1667" width="93.0003" height="31.9167">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="54" name="ground" x="1075.5" y="143.667" width="93.0003" height="29.9167">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="55" name="ground" x="1252.5" y="192.167" width="89.7503" height="29.4167">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="56" name="ground" x="1459.5" y="239.417" width="93.0003" height="30.1667">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="57" name="ground" x="1586.5" y="159.667" width="93.0003" height="31.4167">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="59" name="ground" x="1728.5" y="77.6667" width="93.0003" height="32.4167">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="60" name="ground" x="1937" y="350.417" width="63.0003" height="14.8334">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="63" name="ground" x="1699.92" y="305.083" width="91.0003" height="14.1667">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="65" name="ground" x="1843.5" y="205.917" width="91.667" height="14.1667">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="friction" type="float" value="0"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0.25"/>
+   </properties>
   </object>
  </objectgroup>
  <layer id="2" name="t0" width="140" height="24" offsetx="3" offsety="45.5">
   <data encoding="base64" compression="zlib">
-   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
+   eJztmkds1EAUhp2Nl36FA53Akc6B3usFRAeJIhQChF4kejuQkEAoEkVBVAGiiV6PSUgAKSFKqFJAAiQ6SBzpHPhG61Ecx8mus157Ntpf+uS1LdtTfs+8N15Nc6YZyZo2E/bDAZgFs5Md3sRHjdRD1AfJunxTsD5Wn5TAwzj0TX3yS0pQ0zpCp6DfJamufYY3pE+sW+GZg3HgF5XbOBKNhXG17KuiYtNYYh1fSkznVJKqbRmNMiCzln1lpFd6RHCO/fN69XFGJTlpy03UZTNsga31aM7yS31pv+aM4W/0EK9tti18HuOjiU1uct0tuA139Pies1RTVkDTsmEH7IQc6K2HkJL71uOxlNuxSX2cz2Ip2dczjfwnE19shzzIhwK4C4VQFKh6rbzGS7+43b+RzGdu5Vvmsg+gLQcG4tOvot9FnCLiFZk3f6cuP+An/ILf8Af+wr9AKJeS8Y2XebYfsZ9bY5pd2ZWNZWuQ6HdzfCJ/d+Z4F+gK3aA79ICe0Mu4RvolXvJsJ1Lxvbcrk9drB8XGOHHO1P+lHJsLaTAP5sMCSDd54pXJWyJnKo3QLyrUORLZvfdOPSTnsfEu1UuFsajYGCtkriz6PRUOwxE4CsfgOJxIDsU2EpF/J0EAkiOc393oB7/ktL9iFZtbY0UZC3klkUOLPLkMP5TDI3gMT+ApPIPnFq9YiUYqvDeRahB9NRiGwFAYBsNhhDGW2HnfrfdBtpPwS4WBlNd5qlCQZzWAhtAIGkMTaArN9EpvLMI7i2EJLI1gHsrw0Pux1mraYQ2shXWwHjbARj20HhjLmNbsB+kXL/1hp4s8/xJchitwFa7Bdbihh9a8nEh4JZ78Eq7ubraNE/nti5r0lnK9g/fwAT7CJ/gMX+BrHfwSTwpXdzfbxqzcJE07lFT1mMpx3SjqOhrGQEtimVbQGtpAW2gH7aFDsOp8NIf9bXgi1dimsZ0H82EBpMNC41xtMt/TrkxeKVzdw52vq8rwSrnFLyrHdebvcBOo90SYBJNhCkyFaTAdTtKnp+A05BpeiAShZdx/OayAlbDK8EI/Y9tHty9TXSX/0yPWFEVeG65u0Z6Xz3K6fmk3log5SLSH+K4n2qe/T3NSis17YP4Ol835HbATcmAX7IY9sBcqaIsX8BLKHPrlDPc/q1eu9VwQ7aGF2qOPXukba5nqKvmfHrGmmBUMX7doz8tnOV2/NI8lMpaV71Y4+Tlv5VHnfCiAu1AIRXAP7sMDB2NuvMUuqsiaK4eTyvNWQgkllFBCCSWUkBf6D2GjKsg=
   </data>
  </layer>
 </map>
