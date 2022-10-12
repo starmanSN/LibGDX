@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class Physics {
     public final MyContactListener contactListener;
-    public static final float PPM = 80;
+    public static final float PPM = 100;
     final World world;
     private final Box2DDebugRenderer debugRenderer;
 

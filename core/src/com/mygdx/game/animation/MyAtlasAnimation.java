@@ -30,6 +30,10 @@ public class MyAtlasAnimation {
         return animation.getKeyFrame(time);
     }
 
+    public Animation<TextureAtlas.AtlasRegion> getAnimation() {
+        return animation;
+    }
+
     public void setTime(float dT) {
         time += dT;
         if (time > d && time < animation.getAnimationDuration()) {

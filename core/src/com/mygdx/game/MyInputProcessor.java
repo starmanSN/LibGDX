@@ -7,13 +7,23 @@ import com.badlogic.gdx.math.Vector2;
 public class MyInputProcessor implements InputProcessor {
 
     private Vector2 outForce;
+    private float cameraY, cameraX;
 
     public MyInputProcessor() {
         outForce = new Vector2();
+        cameraY = cameraX= 0;
     }
 
     public Vector2 getVector() {
         return outForce;
+    }
+
+    public float getCameraX() {
+        return cameraX;
+    }
+
+    public float getCameraY() {
+        return cameraY;
     }
 
     @Override
@@ -22,16 +32,16 @@ public class MyInputProcessor implements InputProcessor {
 
         switch (inKey) {
             case "LEFT":
-                outForce.add(-0.05f, 0);
+                outForce.add(-0.028f, 0);
                 break;
             case "RIGHT":
-                outForce.add(0.05f, 0);
+                outForce.add(0.028f, 0);
                 break;
             case "DOWN":
                 outForce.add(0, -0.1f);
                 break;
             case "SPACE":
-                outForce.add(0, 2.52f);
+                outForce.add(0, 2.5f);
                 break;
         }
         return true;
