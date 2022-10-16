@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="66">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="140" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="91">
  <tileset firstgid="1" name="SeekPng.com_jungle-png_1112550" tilewidth="16" tileheight="16" tilecount="1540" columns="55">
   <image source="SeekPng.com_jungle-png_1112550.png" width="885" height="460"/>
  </tileset>
@@ -8,7 +8,7 @@
  </tileset>
  <layer id="1" name="front" width="140" height="24" offsetx="0" offsety="47">
   <data encoding="base64" compression="zlib">
-   eJzt2slSE0Ecx/GOmfgGoj6Bot5V1CfQKHcQDQiKWqVBq1TABZgQ8OhSAgLqRYNWuR5d8A1cUPEV9KQsevU7RVK0cSYZmZk0M9O/qk9N0mTpDk13/1MIoaOjE9XswE40YBd2Y4/SHkUrPxJC/MQc5rGAxYTqXq08p3AaWXThDM4q7ZG71K1R3QN32UQ/N6MeW7AV20LSd7vcxwMUMIWHeKS0R9FKC3PjEA4jg1a0hXi+6KyeRG3v0vk7fp/9VO9d+iwbbPw++6neu8J6lg1LVJ79gti79Fk2ulG9d9kljvtZWMZ8LinEeVxAN3rQm1TbpzjuZ2EZ82PmxhM8xTM8x4sq8yXI+qslGc/9LMpjDnoPy2MIs4klw9y+6t/L69Q4Qddf1nyZFsvzZQYT+vsjHYeUn6n0fIlv3NQBKzlTec23lBDf0enTOpnhtVrRhiNoRweO4pj1Pjie8ue9vMTvcfudsNQBXjPC72AUY7iNcUxgEndwF/cqzJcm/j6acTC5VANsN2rXd5VpktaF1VT7dPO76kEvLuISLuMK+tCPAZjIpf7/8e/wHh/wETP4hM/4gll8xTr22Tqsl1j3r/FZXccN3MSGYnvpsdb9jTZ7tMm8yhnL10HkMYRhI/hxV3t+aV+xNIjq3zd5qX3kOt5r/W63znUVZV22Zx3a7dZM02a938sY9iGN/ZK01JZ2aD+ARnSuZV/DCZzES+bEK7zGG+k6jbdG8OOu9vxshde122e81D5yHe+1fi9f56xab6p4u+CyvWDTbtWLbtfMfsY9ABM5iSm1mQ7tg8jjFnNkBKMYwxxzYh4LWJSuv/Db+HfcGYfxVWp3Grf8M6fnl67l7U6fmZfaR67j9f/+xCMqah8dHR2dWuYPKvMlKA==
+   eJzt2slSE0Ecx/GJWd5A1CdwvauoT6BR7wgacEOt0qBVKuAGEwIeXUpAcblo0CrXowse1KsLKr6CnjQJevU7laRo4nQyMjNpZtK/qk9l0kyS7qGZ7n8Kw9DR0QlrNmAjWrEJm7FFaY/ClZ8Rw/iFPAooYjaiulcLz1EcQxo9OI4TSnvkLC1LVPfAWVbSz1VYjTVYi3UB6btd7uIecpjEfTxQ2qNwpYO5sRt7kEInugI8X3QWT8K2dunMj9d7P9Vrl97L+huv936q166g7mWDEpV7Pz/WLr2XDW9Ur112acb1LChjPhk1jFM4jV70oT+qtk/NuJ4FZcwPmRuP8BhP8BTP6swXP+uvjmhzrmdhHrPfa1gWw5iJlIxwfNG7t9dpcPyuv6z5MmXMzZdpTOjvj3Qkqd5T6fnSvHFSByxkT+U23+OG8QPdHt0nU7xXJ7qwF/uwHwdw0PocHIp781lu4vW4vU5Q6gC3GeV3MIZxXMcNTOAmbuE27tSYL238fexCe7RUA6yPNa7vKtMm3BcWU+3Ty++qD/04g7M4h/O4gAEMwkQm/v/nv8cHfMQnTOMzvuArZvANS1lnW7BMYD2/xLW6jCu4iuXl9sq51vMVNmu0ybzKxOYeh5DFMEZi/o+73usr64ql1aj/fZOb2kes493W73b3uZ6ytMP2tKTd7p5p2tzvtzKGbUhiuyAptCUl7TuwE90J1jUcxhE8Z068wEu8Eh6n8Drm/7jrvT5d432ta/YmUfIW7xLy2kc8R3Ys1vFu6/fq+5xV602Wj3MO23M27Va96PSeOcC4B2EiIzCFNlPSPoQsrnFdRjGGceSZEwUUMSs8/saf2L/jTknGV6tdNm7xZ7LXVx6r2yvXLJ8oKaCYkNc+4jmyY7GO1//70xxRUfvo6OjoNDJ/AU8APBo=
   </data>
  </layer>
  <objectgroup id="3" name="dyn">
@@ -111,6 +111,16 @@
  </objectgroup>
  <objectgroup id="7" name="damageGround">
   <object id="39" name="damageGround" x="800.397" y="350.562" width="64.7455" height="20.1256">
+   <properties>
+    <property name="damage" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="89" name="damageGround" x="1631.88" y="352.937" width="66.9955" height="20.1256">
+   <properties>
+    <property name="damage" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="90" name="damageGround" x="1791.88" y="353.187" width="145.995" height="20.1256">
    <properties>
     <property name="damage" type="float" value="1"/>
    </properties>

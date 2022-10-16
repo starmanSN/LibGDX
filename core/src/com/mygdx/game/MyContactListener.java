@@ -3,7 +3,8 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.physics.box2d.*;
-import com.mygdx.game.screens.GameScreen;
+import com.mygdx.game.screens.LevelOne;
+import com.mygdx.game.screens.LevelTwo;
 
 public class MyContactListener implements ContactListener {
 
@@ -69,11 +70,13 @@ public class MyContactListener implements ContactListener {
         Fixture a = contact.getFixtureA();
         Fixture b = contact.getFixtureB();
         if (a.getUserData().equals("Hero") && b.getUserData().equals("coins")) {
-            GameScreen.bodyToDelete.add(b.getBody());
+            LevelOne.bodyToDelete.add(b.getBody());
+//            LevelTwo.bodyToDelete.add(b.getBody());
             Gdx.graphics.setTitle("Your Score: " + (count += 1));
         }
         if (b.getUserData().equals("Hero") && a.getUserData().equals("coins")) {
-            GameScreen.bodyToDelete.add(a.getBody());
+            LevelOne.bodyToDelete.add(a.getBody());
+//            LevelTwo.bodyToDelete.add(a.getBody());
             Gdx.graphics.setTitle("Your Score: " + (count += 1));
         }
     }

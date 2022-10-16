@@ -31,7 +31,7 @@ import com.mygdx.game.persons.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameScreen implements Screen {
+public class LevelTwo implements Screen {
 
     Game game;
     private SpriteBatch batch;
@@ -51,13 +51,13 @@ public class GameScreen implements Screen {
     private Label font;
 
 
-    public GameScreen(Game game) {
+    public LevelTwo(Game game) {
         font = new Label(12);
 
         bodyToDelete = new ArrayList<>();
         coinAnimation = new MyAnimation("coin-sprite-animation.png", 1, 10, 6, Animation.PlayMode.LOOP);
         this.game = game;
-        map = new TmxMapLoader().load("map/map3.tmx");
+        map = new TmxMapLoader().load("map/безымянный.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
 
         front = new int[1];

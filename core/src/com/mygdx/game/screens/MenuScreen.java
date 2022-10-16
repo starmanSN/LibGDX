@@ -54,7 +54,7 @@ public class MenuScreen implements Screen {
         if (Gdx.input.isTouched()) {
             if (rectangle.contains(Gdx.input.getX(), Gdx.graphics.getHeight() - Gdx.input.getY())) {
                 dispose();
-                game.setScreen(new GameScreen(game));
+                game.setScreen(new LevelOne(game));
             }
         }
     }
