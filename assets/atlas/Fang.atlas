@@ -1,111 +1,167 @@
 
 Fang.png
-size: 128, 256
+size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+blow
+  rotate: false
+  xy: 2, 33
+  size: 53, 93
+  orig: 53, 93
+  offset: 0, 0
+  index: 8
+blow
+  rotate: false
+  xy: 57, 35
+  size: 53, 91
+  orig: 53, 91
+  offset: 0, 0
+  index: 7
+blow
+  rotate: false
+  xy: 72, 4
+  size: 17, 29
+  orig: 17, 29
+  offset: 0, 0
+  index: 1
+blow
+  rotate: false
+  xy: 112, 37
+  size: 48, 89
+  orig: 48, 89
+  offset: 0, 0
+  index: 6
+blow
+  rotate: false
+  xy: 162, 42
+  size: 45, 84
+  orig: 45, 84
+  offset: 0, 0
+  index: 5
+blow
+  rotate: false
+  xy: 209, 53
+  size: 43, 73
+  orig: 43, 73
+  offset: 0, 0
+  index: 3
+blow
+  rotate: false
+  xy: 254, 54
+  size: 43, 72
+  orig: 43, 72
+  offset: 0, 0
+  index: 4
+blow
+  rotate: false
+  xy: 473, 38
+  size: 32, 39
+  orig: 32, 39
+  offset: 0, 0
+  index: 2
 jump
   rotate: false
-  xy: 2, 19
+  xy: 2, 3
   size: 33, 28
   orig: 33, 28
   offset: 0, 0
   index: 3
 jump
   rotate: false
-  xy: 86, 21
+  xy: 37, 4
   size: 33, 27
   orig: 33, 27
   offset: 0, 0
   index: 1
 jump
   rotate: false
-  xy: 93, 222
+  xy: 112, 3
   size: 28, 32
   orig: 28, 32
   offset: 0, 0
   index: 2
 jump
   rotate: false
-  xy: 93, 187
+  xy: 142, 2
   size: 26, 33
   orig: 26, 33
   offset: 0, 0
   index: 4
 punch
   rotate: false
-  xy: 2, 154
+  xy: 209, 4
   size: 49, 47
   orig: 49, 47
   offset: 0, 0
   index: 2
 punch
   rotate: false
-  xy: 90, 105
+  xy: 472, 79
   size: 35, 47
   orig: 35, 47
   offset: 0, 0
   index: 1
 run
   rotate: false
-  xy: 2, 203
-  size: 50, 51
-  orig: 50, 51
-  offset: 0, 0
-  index: 3
-run
-  rotate: false
-  xy: 2, 102
+  xy: 260, 2
   size: 47, 50
   orig: 47, 50
   offset: 0, 0
   index: 7
 run
   rotate: false
-  xy: 2, 49
-  size: 40, 51
-  orig: 40, 51
+  xy: 299, 75
+  size: 50, 51
+  orig: 50, 51
   offset: 0, 0
-  index: 2
+  index: 3
 run
   rotate: false
-  xy: 44, 50
+  xy: 309, 23
   size: 41, 50
   orig: 41, 50
   offset: 0, 0
   index: 4
 run
   rotate: false
-  xy: 51, 102
+  xy: 351, 75
+  size: 40, 51
+  orig: 40, 51
+  offset: 0, 0
+  index: 2
+run
+  rotate: false
+  xy: 392, 23
   size: 37, 50
   orig: 37, 50
   offset: 0, 0
   index: 1
 run
   rotate: false
-  xy: 54, 204
+  xy: 393, 76
   size: 37, 50
   orig: 37, 50
   offset: 0, 0
   index: 6
 stand
   rotate: false
-  xy: 53, 154
-  size: 38, 47
-  orig: 38, 47
+  xy: 352, 24
+  size: 38, 49
+  orig: 38, 49
   offset: 0, 0
-  index: 2
+  index: 1
 stand
   rotate: false
-  xy: 44, 2
+  xy: 431, 28
   size: 40, 46
   orig: 40, 46
   offset: 0, 0
   index: 3
 stand
   rotate: false
-  xy: 87, 51
-  size: 38, 49
-  orig: 38, 49
+  xy: 432, 79
+  size: 38, 47
+  orig: 38, 47
   offset: 0, 0
-  index: 1
+  index: 2

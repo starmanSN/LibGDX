@@ -12,13 +12,19 @@ public class MyAtlasAnimation {
     Animation<TextureAtlas.AtlasRegion> animation;
     private float time;
     private Sound sound;
+    private float fps;
     private boolean loop;
     private float d;
 
-    public MyAtlasAnimation(String atlas, String name, float fps, boolean playMode, String sound) {
+    public MyAtlasAnimation(String atlas, String name, float fps, boolean playMode, String animSound) {
         if (playMode) loop = true;
-        this.sound = Gdx.audio.newSound(Gdx.files.internal(sound));
-        this.sound.play();
+        if (animSound == null || animSound.isEmpty()) {
+            this.sound = null;
+        } else {
+            this.sound = Gdx.audio.newSound(Gdx.files.internal(animSound));
+            this.sound.play();
+        }
+        this.fps = fps;
         time = 0;
         this.atlas = new TextureAtlas(atlas);
         animation = new Animation<>(1 / fps, this.atlas.findRegions(name));
@@ -46,13 +52,19 @@ public class MyAtlasAnimation {
         }
     }
 
+    public void setPlayMode(boolean playMode){
+        this.loop=playMode;
+    }
+
     public void putTime(float time) {
         this.time = time;
     }
 
     public void dispose() {
         this.atlas.dispose();
-        sound.dispose();
+        if (sound != null) {
+            this.sound.dispose();
+        }
     }
 
 }

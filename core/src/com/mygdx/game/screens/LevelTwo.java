@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -70,6 +71,10 @@ public class LevelTwo implements Screen {
         objects.addAll(map.getLayers().get("dyn").getObjects().getByType(RectangleMapObject.class));
         for (int i = 0; i < objects.size; i++) {
             physics.addObject(objects.get(i));
+        }
+        Array<PolylineMapObject> shape = map.getLayers().get("env").getObjects().getByType(PolylineMapObject.class);
+        for (int i = 0; i < shape.size; i++) {
+            physics.addObject(shape.get(i));
         }
 
         objects.clear();
@@ -131,7 +136,7 @@ public class LevelTwo implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        font.draw(batch, "HP " + player.getHit(0), (int) tmp.x, (int) (tmp.y + tmp.height * Physics.PPM));
+        font.draw(batch, "HP " + player.getHit(0), (int) camera.position.x - Gdx.graphics.getWidth() / 5, (int) (camera.position.y + Gdx.graphics.getHeight() / 6));
 //        batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(player.getFrame(), tmp.x, tmp.y, tmp.width * Physics.PPM, tmp.height * Physics.PPM);
 

@@ -1,11 +1,13 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.enums.Types;
 
 import java.util.Iterator;
 
@@ -51,7 +53,8 @@ public class Physics {
         polygonShape.setAsBox(rect.width / 2 / PPM, rect.height / 2 / PPM);
 
         fixtureDef.shape = polygonShape;
-        fixtureDef.friction = (float) object.getProperties().get("friction");
+        if (object.getProperties().get("friction") != null)
+            fixtureDef.friction = (float) object.getProperties().get("friction");
         fixtureDef.density = 1;
         fixtureDef.restitution = (float) object.getProperties().get("restitution");
 
@@ -62,13 +65,64 @@ public class Physics {
         body.setUserData(name);
         body.createFixture(fixtureDef).setUserData(name);
 
+//        Filter filter = new Filter();
+//        if (name.equals("coins")) {
+//            filter.categoryBits = Types.Coin;
+//            filter.maskBits = Types.Stone | Types.Chain | Types.Hero;
+//        }
+//
+//        if (name.equals("stone")) {
+//            filter.categoryBits = Types.Stone;
+//            filter.maskBits = -1;
+//        }
+
         if (name.equals("Hero")) {
-            polygonShape.setAsBox(rect.width / 3 / PPM, rect.height / 10 / PPM, new Vector2(0, -rect.width / 2), 0);
+//            filter.categoryBits = Types.Hero;
+//            filter.maskBits = Types.Stone | Types.Coin;
+            polygonShape.setAsBox(rect.width / 2.5f / PPM, rect.height / 10 / PPM, new Vector2(0, -rect.width / 2), 0);
             body.createFixture(fixtureDef).setUserData("legs");
             body.getFixtureList().get(1).setSensor(true);
         }
 
+//        body.getFixtureList().get(0).setFilterData(filter);
         polygonShape.dispose();
+        return body;
+    }
+
+    public Body addObject(PolylineMapObject object) {
+        String type = (String) object.getProperties().get("BodyType");
+        BodyDef def = new BodyDef();
+        FixtureDef fixtureDef = new FixtureDef();
+        float[] tf = object.getPolyline().getTransformedVertices();
+        for (int i = 0; i < tf.length; i++) {
+            tf[i] /= PPM;
+        }
+        ChainShape chainShape = new ChainShape();
+        chainShape.createChain(tf);
+
+        if (type.equals("StaticBody")) def.type = BodyDef.BodyType.StaticBody;
+        if (type.equals("DynamicBody")) def.type = BodyDef.BodyType.DynamicBody;
+
+        def.gravityScale = (float) object.getProperties().get("gravityScale");
+
+        fixtureDef.shape = chainShape;
+        if (object.getProperties().get("friction") != null)
+            fixtureDef.friction = (float) object.getProperties().get("friction");
+        fixtureDef.density = 1;
+        fixtureDef.restitution = (float) object.getProperties().get("restitution");
+
+        String name = "chain";
+        Body body;
+        body = world.createBody(def);
+        body.setUserData(name);
+        body.createFixture(fixtureDef).setUserData(name);
+
+        Filter filter = new Filter();
+        filter.categoryBits = Types.Chain;
+        filter.maskBits = Types.Hero | Types.Coin;
+        body.getFixtureList().get(0).setFilterData(filter);
+
+        chainShape.dispose();
         return body;
     }
 
@@ -84,6 +138,10 @@ public class Physics {
         polygonShape.setAsBox(rect.width / 2 / PPM, rect.height / 2 / PPM);
         fixtureDef.shape = polygonShape;
 
+        if (object.getProperties().get("friction") != null)
+            fixtureDef.friction = (float) object.getProperties().get("friction");
+        fixtureDef.restitution = 1;
+
         String name = "damageGround";
         Body body;
         body = world.createBody(def);
@@ -95,7 +153,6 @@ public class Physics {
         polygonShape.dispose();
     }
 
-
     public void removeBody(Body body) {
         world.destroyBody(body);
     }
@@ -106,6 +163,24 @@ public class Physics {
 
     public void step() {
         world.step(1 / 60f, 3, 3);
+    }
+
+    public Body addFireball(float x, float y) {
+        BodyDef def = new BodyDef();
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape polygonShape = new PolygonShape();
+        def.type = BodyDef.BodyType.DynamicBody;
+        def.position.set(x, y);
+        polygonShape.setAsBox(2/PPM, 2/PPM);
+        fixtureDef.shape = polygonShape;
+        String name = "fireball";
+        Body body;
+        body = world.createBody(def);
+        body.setUserData(name);
+        body.createFixture(fixtureDef).setUserData(name);
+        body.getFixtureList().get(0).setSensor(true);
+        polygonShape.dispose();
+        return body;
     }
 
     public void dispose() {

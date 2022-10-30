@@ -21,7 +21,6 @@ public class Player {
     public static boolean canJump, isFire;
     private Animation<TextureAtlas.AtlasRegion> baseAnm;
     private boolean loop;
-    private TextureAtlas atl;
     private Body body;
     private Dir dir;
     private static float dScale = 1;
@@ -34,12 +33,10 @@ public class Player {
         hitPoints = live = 100;
         this.body = body;
         manAssets = new HashMap<>();
-        atl = new TextureAtlas("atlas/Fang.atlas");
-//        manAssets.put(HeroActions.JUMP, new Animation<TextureRegion>(FPS, atl.findRegions("jump")));
         manAssets.put(HeroActions.JUMP, new MyAtlasAnimation("atlas/Fang.atlas", "jump", FPS, true, "sounds/cartoon-spring-boing-03.mp3"));
         manAssets.put(HeroActions.RUN, new MyAtlasAnimation("atlas/Fang.atlas", "run", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
-        manAssets.put(HeroActions.STAND, new MyAtlasAnimation("atlas/Fang.atlas", "stand", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
-        manAssets.put(HeroActions.SHOOT, new MyAtlasAnimation("atlas/Fang.atlas", "shoot", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
+        manAssets.put(HeroActions.STAND, new MyAtlasAnimation("atlas/Fang.atlas", "stand", FPS, true, null));
+        manAssets.put(HeroActions.SHOOT, new MyAtlasAnimation("atlas/Fang.atlas", "punch", FPS, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3"));
         baseAnm = manAssets.get(HeroActions.STAND).getAnimation();
         loop = true;
         dir = Dir.LEFT;
@@ -73,10 +70,11 @@ public class Player {
     public Body setFPS(Vector2 vector, boolean onGround) {
         if (vector.x > 0.1f) setDir(Dir.RIGHT);
         if (vector.x < -0.1f) setDir(Dir.LEFT);
-        float tmp = (float) (Math.sqrt(vector.x * vector.x + vector.y * vector.y)) * 10;
+        float tmp = (float) (Math.sqrt(vector.x * vector.x + vector.y * vector.y)) * 5;
         setState(HeroActions.STAND);
         if (isFire) {
             setState(HeroActions.SHOOT);
+            manAssets.get(HeroActions.SHOOT).setTime(FPS);
             return body;
         }
         if (Math.abs(vector.x) > 0.2f && Math.abs(vector.y) < 10 && onGround) {
@@ -86,7 +84,6 @@ public class Player {
         }
         if (Math.abs(vector.y) > 1 && !canJump) {
             setState(HeroActions.JUMP);
-            baseAnm.setFrameDuration(FPS);
             return null;
         }
         return null;
@@ -106,6 +103,10 @@ public class Player {
                 break;
             case JUMP:
                 loop = false;
+                break;
+            case SHOOT:
+                loop = true;
+                baseAnm.setFrameDuration(FPS);
                 break;
             default:
                 loop = true;
@@ -131,7 +132,6 @@ public class Player {
     }
 
     public void dispose() {
-        atl.dispose();
         this.manAssets.clear();
     }
 }

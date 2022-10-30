@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.persons.Player;
 
 public class MyInputProcessor implements InputProcessor {
 
@@ -11,7 +12,7 @@ public class MyInputProcessor implements InputProcessor {
 
     public MyInputProcessor() {
         outForce = new Vector2();
-        cameraY = cameraX= 0;
+        cameraY = cameraX = 0;
     }
 
     public Vector2 getVector() {
@@ -32,16 +33,16 @@ public class MyInputProcessor implements InputProcessor {
 
         switch (inKey) {
             case "LEFT":
-                outForce.add(-0.028f, 0);
+                outForce.add(-0.08f, 0);
                 break;
             case "RIGHT":
-                outForce.add(0.028f, 0);
+                outForce.add(0.08f, 0);
                 break;
-            case "DOWN":
-                outForce.add(0, -0.1f);
+            case "UP":
+                outForce.add(0, 2.15f);
                 break;
             case "SPACE":
-                outForce.add(0, 2.5f);
+                Player.isFire = true;
                 break;
         }
         return true;
@@ -58,11 +59,11 @@ public class MyInputProcessor implements InputProcessor {
             case "RIGHT":
                 outForce.set(0, outForce.y);
                 break;
-            case "DOWN":
+            case "UP":
                 outForce.set(outForce.x, 0);
                 break;
             case "SPACE":
-                outForce.set(outForce.x, 0);
+                Player.isFire = false;
                 break;
         }
         return true;

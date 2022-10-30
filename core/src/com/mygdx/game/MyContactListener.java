@@ -14,7 +14,6 @@ public class MyContactListener implements ContactListener {
     private Sound sound;
     public static boolean onGround;
 
-
     public MyContactListener() {
         sound = Gdx.audio.newSound(Gdx.files.internal("sounds/7d32ae33c98b0c7.mp3"));
     }

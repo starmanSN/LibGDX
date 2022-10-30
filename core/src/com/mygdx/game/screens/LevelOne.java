@@ -26,6 +26,9 @@ import com.mygdx.game.MyContactListener;
 import com.mygdx.game.MyInputProcessor;
 import com.mygdx.game.Physics;
 import com.mygdx.game.animation.MyAnimation;
+import com.mygdx.game.animation.MyAtlasAnimation;
+import com.mygdx.game.enums.HeroActions;
+import com.mygdx.game.persons.Fireball;
 import com.mygdx.game.persons.Player;
 
 import java.util.ArrayList;
@@ -48,6 +51,7 @@ public class LevelOne implements Screen {
     private int[] front, tL;
     private final Player player;
     public static List<Body> bodyToDelete;
+    public static List<Fireball> fireballs;
     private Label font;
 
 
@@ -55,6 +59,7 @@ public class LevelOne implements Screen {
         font = new Label(12);
 
         bodyToDelete = new ArrayList<>();
+        fireballs = new ArrayList<>();
         coinAnimation = new MyAnimation("coin-sprite-animation.png", 1, 10, 6, Animation.PlayMode.LOOP);
         this.game = game;
         map = new TmxMapLoader().load("map/map3.tmx");
@@ -116,11 +121,35 @@ public class LevelOne implements Screen {
 
         player.setTime(delta);
         Vector2 vector = myInputProcessor.getVector();
+
+        Body tBody = player.setFPS(body.getLinearVelocity(), true);
+        if (tBody != null) {
+            MyAtlasAnimation animation = new MyAtlasAnimation("atlas/Fang.atlas", "blow", 1/60f, true, "sounds/single_on_dirty_stone_step_flip_flop_007_30443.mp3");
+            fireballs.add(new Fireball(physics, tBody.getPosition().x, tBody.getPosition().y, player.getDir(), animation));
+            vector.set(0, 0);
+        } else if (tBody != null) {
+            vector.set(0, 0);
+            player.setState(HeroActions.STAND);
+        }
         if (MyContactListener.cnt < 1) {
             vector.set(vector.x, 0);
         }
 
         body.applyForceToCenter(vector, true);
+
+        ArrayList<Fireball> fBTmp = new ArrayList<>();
+        batch.begin();
+        for (Fireball f : fireballs) {
+            Body fB = f.update(delta);
+            f.draw(batch);
+            if (fB != null) {
+                bodyToDelete.add(fB);
+                fBTmp.add(f);
+            }
+        }
+        batch.end();
+        fireballs.removeAll(fBTmp);
+
         player.setFPS(body.getLinearVelocity(), true);
 
         Rectangle tmp = player.getRect(camera, player.getFrame());
@@ -131,7 +160,8 @@ public class LevelOne implements Screen {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        font.draw(batch, "HP " + player.getHit(0), (int) tmp.x, (int) (tmp.y + tmp.height * Physics.PPM));
+
+        font.draw(batch, "HP " + player.getHit(0), (int) camera.position.x - Gdx.graphics.getWidth() / 5, (int) (camera.position.y + Gdx.graphics.getHeight() / 6));
 //        batch.draw(img, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(player.getFrame(), tmp.x, tmp.y, tmp.width * Physics.PPM, tmp.height * Physics.PPM);
 
